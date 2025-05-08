@@ -1,0 +1,24 @@
+/* Estilos específicos do componente App */
+
+/* Cabeçalho */
+.app-header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.app-footer {
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Layout principal */
+.main-content {
+  padding: 20px 0;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 10px 0;
+  }
+}

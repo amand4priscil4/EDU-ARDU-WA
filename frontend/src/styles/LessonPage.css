@@ -1,0 +1,222 @@
+/* Estilos para a página de aula */
+
+.lesson-page {
+  position: relative;
+}
+
+/* Cabeçalho da aula */
+.lesson-header {
+  margin-bottom: 20px;
+}
+
+.lesson-header h1 {
+  color: var(--primary-dark);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.lesson-description {
+  color: var(--gray-color);
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.lesson-info {
+  display: flex;
+  gap: 20px;
+  color: var(--gray-color);
+  font-size: 0.9rem;
+}
+
+.lesson-level,
+.lesson-duration {
+  display: flex;
+  align-items: center;
+}
+
+.lesson-level::before {
+  content: '📊';
+  margin-right: 5px;
+}
+
+.lesson-duration::before {
+  content: '⏱️';
+  margin-right: 5px;
+}
+
+/* Barra de progresso */
+.lesson-progress {
+  margin-bottom: 20px;
+}
+
+.progress-text {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.9rem;
+  color: var(--gray-color);
+  margin-top: 5px;
+}
+
+/* Conteúdo da aula */
+.lesson-content {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 10px;
+}
+
+/* Estilo do passo da aula */
+.lesson-step {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Mensagem do robô */
+.step-message {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.message-content {
+  flex: 1;
+}
+
+.message-text {
+  background-color: var(--accent-light);
+  padding: 15px;
+  border-radius: 10px 10px 10px 0;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.message-text::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 15px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid var(--accent-light);
+}
+
+.message-image {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.message-image img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Área de resposta */
+.step-response {
+  padding: 15px 0;
+}
+
+/* Opções de respostas */
+.response-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-button {
+  padding: 12px 15px;
+  text-align: left;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Input de resposta aberta */
+.response-input {
+  margin-top: 10px;
+}
+
+.response-input textarea {
+  border-radius: 8px;
+  resize: vertical;
+}
+
+/* Comando para o robô */
+.robot-command {
+  margin-top: 10px;
+}
+
+.command-button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+/* Feedback */
+.feedback-alert {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navegação entre passos */
+.lesson-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.navigation-center {
+  display: flex;
+  gap: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .step-message {
+    flex-direction: column;
+  }
+
+  .message-avatar {
+    margin-bottom: 10px;
+  }
+
+  .message-text::after {
+    display: none;
+  }
+
+  .lesson-navigation {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .navigation-center {
+    order: -1;
+    margin-bottom: 10px;
+  }
+}

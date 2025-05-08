@@ -1,0 +1,29 @@
+{
+  "name": "edu-ardu-webapp",
+  "version": "1.0.0",
+  "description": "Aplicativo web educacional para robótica com Arduino",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/src/index.js",
+    "server": "nodemon backend/src/index.js",
+    "client": "cd frontend && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install"
+  },
+  "keywords": [
+    "arduino",
+    "robotics",
+    "education"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "blockly": "^11.2.2",
+    "react-bootstrap": "^2.10.9",
+    "react-icons": "^5.5.0"
+  }
+}

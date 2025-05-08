@@ -1,0 +1,58 @@
+/* Estilos para o componente Header */
+
+.edu-ardu-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-logo {
+  height: 36px;
+  margin-right: 10px;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  font-weight: 500;
+  padding: 8px 15px !important;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-link svg {
+  margin-right: 5px;
+}
+
+.robot-status-indicator {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.status-text {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .robot-status-indicator {
+    margin-top: 10px;
+  }
+}

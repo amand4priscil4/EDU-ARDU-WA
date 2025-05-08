@@ -1,0 +1,143 @@
+/* Estilos para a Home Page */
+
+/* Seção de boas-vindas */
+.welcome-section {
+  padding: 30px 0;
+  margin-bottom: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.welcome-section h1 {
+  color: var(--primary-dark);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.welcome-section .lead {
+  font-size: 1.1rem;
+  color: var(--gray-color);
+  margin-bottom: 20px;
+}
+
+.welcome-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+}
+
+/* Seção de aulas */
+.lessons-section {
+  padding: 20px 0;
+}
+
+.lessons-section h2 {
+  color: var(--primary-dark);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.lesson-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-thumbnail {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.lesson-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-light);
+  color: var(--text-light);
+}
+
+.lesson-level {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.lesson-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: var(--gray-color);
+  font-size: 0.9rem;
+}
+
+.duration {
+  display: flex;
+  align-items: center;
+}
+
+.duration::before {
+  content: '⏱️';
+  margin-right: 5px;
+}
+
+/* Seção sobre o projeto */
+.about-section {
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.about-section h2 {
+  color: var(--primary-dark);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.about-section p {
+  margin-bottom: 15px;
+}
+
+.about-section ul {
+  margin-left: 20px;
+}
+
+.about-section li {
+  margin-bottom: 8px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .welcome-section {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .welcome-image {
+    max-height: 200px;
+    margin: 20px auto;
+  }
+
+  .lesson-thumbnail {
+    height: 150px;
+  }
+}
