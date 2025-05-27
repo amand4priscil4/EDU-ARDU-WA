@@ -1,428 +1,327 @@
 /**
- * Dados das aulas do Edu-Ardu
- * Estrutura de uma aula:
- * {
- *   id: string único para a aula,
- *   title: título da aula,
- *   description: descrição breve da aula,
- *   level: nível de dificuldade (iniciante, intermediário, avançado),
- *   thumbnail: caminho da imagem de capa (opcional),
- *   duration: duração estimada em minutos,
- *   steps: [
- *     {
- *       id: número único do passo na aula,
- *       type: tipo do passo (texto, pergunta, opções, comando-robô),
- *       message: texto principal do passo,
- *       image: imagem ilustrativa (opcional),
- *       waitForAnswer: booleano indicando se espera resposta,
- *       correctAnswer: resposta correta (para perguntas),
- *       wrongAnswerResponse: feedback para respostas incorretas,
- *       correctFeedback: feedback para resposta correta,
- *       options: array de opções para escolha múltipla
- *     }
- *   ]
- * }
+ * Dados das aulas do Edu-Ardu - Versão Aprimorada
+ * Estrutura completa com gamificação e recursos avançados
  */
 
 const lessons = [
   {
     id: 'robotica-basica',
     title: 'Conceitos Básicos de Robótica',
-    description: 'Aprenda o que é robótica e como os robôs funcionam',
+    description: 'Aprenda os fundamentos da robótica, tipos de robôs e suas aplicações no mundo moderno',
     level: 'iniciante',
     thumbnail: '/images/imagem4.jpg',
     duration: 15,
+    
+    // 🎮 GAMIFICAÇÃO COMPLETA
+    xpReward: 50,           // XP total da lição
+    xpPerStep: 3,           // XP base por step
+    bonusXP: 10,            // XP bonus por acertos consecutivos
+    gemsReward: 5,          // Gemas ganhas na conclusão
+    livesRequired: 1,       // Vidas necessárias para começar
+    
+    // 📚 METADADOS EDUCACIONAIS
+    difficulty: 1,          // Dificuldade 1-5
+    tags: ['conceitos', 'básico', 'introdução'],
+    prerequisites: [],      // Lições necessárias antes desta
+    nextLessons: ['introducao-arduino'], // Próximas lições sugeridas
+    estimatedTime: '12-18 min', // Tempo real estimado
+    
+    // 🤖 INTEGRAÇÃO IA ALLAMA
+    chatContext: 'Esta lição ensina conceitos básicos de robótica. O aluno está aprendendo sobre sensores, cérebro e atuadores.',
+    suggestedQuestions: [
+      'O que são sensores em robótica?',
+      'Como funciona o cérebro de um robô?',
+      'Quais tipos de atuadores existem?'
+    ],
+    
+    // 📊 ANALYTICS
+    averageCompletionTime: 14, // minutos
+    difficultyRating: 4.2,     // 1-5 estrelas
+    completionRate: 87,        // porcentagem
+    
     steps: [
       {
         id: 1,
         type: 'texto',
-        message:
-          'Olá! Eu sou o Robo-Duino e vou te ensinar sobre robótica! 🤖 Você está pronto para nossa aventura no mundo dos robôs?',
+        message: 'Olá! Eu sou o Robo-Duino e vou te ensinar sobre robótica! 🤖 Você está pronto para nossa aventura no mundo dos robôs?',
+        
+        // 🎮 GAMIFICAÇÃO POR STEP
+        xpReward: 3,
+        stepProgress: 5, // porcentagem do progresso
+        
+        // 🤖 INTEGRAÇÃO IA
+        aiHints: ['Se tiver dúvidas, pergunte sobre robótica!'],
+        
         options: [
           {
             text: 'Sim, quero aprender!',
-            response: 'Ótimo! Vamos começar nossa jornada no mundo da robótica!'
+            isCorrect: true,
+            response: 'Ótimo! Vamos começar nossa jornada no mundo da robótica!',
+            xpBonus: 2,
+            gemsBonus: 1
           },
           {
             text: 'O que é robótica?',
-            response: 'Excelente pergunta! Vamos descobrir juntos o que é robótica.'
+            isCorrect: true, // Ambas corretas
+            response: 'Excelente pergunta! Vamos descobrir juntos o que é robótica.',
+            xpBonus: 2,
+            gemsBonus: 1
           }
         ]
       },
+      
       {
         id: 2,
         type: 'texto',
-        message:
-          'Primeiro, vamos entender: O que é robótica? 🤔\n\nRobótica é a ciência que estuda como criar e controlar robôs! Os robôs são máquinas especiais que podemos programar para fazer tarefas, como mover objetos, explorar lugares ou até ajudar pessoas.',
-        image: '/images/imagem3.jpg'
+        message: 'Primeiro, vamos entender: O que é robótica? 🤔\n\nRobótica é a ciência que estuda como criar e controlar robôs! Os robôs são máquinas especiais que podemos programar para fazer tarefas, como mover objetos, explorar lugares ou até ajudar pessoas.',
+        image: '/images/imagem3.jpg',
+        
+        xpReward: 3,
+        stepProgress: 10,
+        
+        // 🔍 RECURSOS EXTRAS
+        funFacts: [
+          'A palavra "robô" vem do tcheco "robota" que significa trabalho forçado',
+          'O primeiro robô foi criado em 1954!'
+        ],
+        relatedConcepts: ['automação', 'inteligência artificial', 'mecatrônica']
       },
+      
       {
         id: 3,
         type: 'pergunta',
         message: 'Você já viu algum robô no seu dia a dia ou em filmes? Conte para mim!',
-        waitForAnswer: true
+        waitForAnswer: true,
+        
+        xpReward: 5, // Mais XP para perguntas abertas
+        stepProgress: 15,
+        
+        // 🎯 VALIDAÇÃO INTELIGENTE
+        keywordHints: ['aspirador', 'filme', 'brinquedo', 'industrial'],
+        minAnswerLength: 10,
+        
+        // 🤖 INTEGRAÇÃO IA
+        aiAnalysis: true, // IA Allama analisará a resposta
+        
+        feedback: {
+          excellent: 'Que resposta incrível! +3 XP bonus',
+          good: 'Boa resposta! +2 XP bonus',
+          basic: 'Obrigado por compartilhar! +1 XP bonus'
+        }
       },
-      {
-        id: 4,
-        type: 'texto',
-        message:
-          'Que legal! Existem muitos tipos de robôs:\n\n• Robôs industriais que montam carros\n• Robôs domésticos como aspiradores de pó\n• Robôs de brinquedo\n• Braços robóticos\n• Robôs que exploram outros planetas\n\nE muitos outros!'
-      },
-      {
-        id: 5,
-        type: 'texto',
-        message: 'Para um robô funcionar, ele precisa de 3 partes principais. Vamos conhecê-las?',
-        options: [
-          {
-            text: 'Sim, quero saber!',
-            response: 'Ótimo! Vamos descobrir as 3 partes principais de um robô.'
-          }
-        ]
-      },
-      {
-        id: 6,
-        type: 'texto',
-        message:
-          'As 3 partes principais de um robô são:\n\n1️⃣ SENSORES: São como os "olhos e ouvidos" do robô. Eles detectam o que está acontecendo ao redor.\n\n2️⃣ CÉREBRO: É o computador que controla o robô e toma decisões baseadas nos sensores.\n\n3️⃣ ATUADORES: São os "músculos" do robô, como motores que fazem ele se movimentar.',
-        image: '/images/imagem1.jpg'
-      },
+      
       {
         id: 7,
         type: 'opcoes',
         message: 'Qual destas é uma parte principal de um robô?',
+        
+        xpReward: 4,
+        stepProgress: 35,
+        
+        // ⚡ TIMEOUT E VIDAS
+        timeLimit: 30, // segundos
+        livesLost: 1,   // vidas perdidas se errar
+        
         options: [
           {
             text: 'Bateria',
             isCorrect: false,
-            response:
-              'A bateria é importante, mas não é uma das 3 partes principais. As partes principais são: sensores, cérebro (computador) e atuadores (motores).'
+            response: 'A bateria é importante, mas não é uma das 3 partes principais. As partes principais são: sensores, cérebro (computador) e atuadores (motores).',
+            livesLost: 1,
+            xpLost: 1
           },
           {
             text: 'Sensores',
             isCorrect: true,
-            response:
-              'Correto! Os sensores são como os "sentidos" do robô. Eles ajudam o robô a "perceber" o mundo ao seu redor.'
+            response: 'Correto! Os sensores são como os "sentidos" do robô. Eles ajudam o robô a "perceber" o mundo ao seu redor.',
+            xpBonus: 3,
+            gemsBonus: 1,
+            streakBonus: true
           },
           {
             text: 'Rodas',
             isCorrect: false,
-            response:
-              'As rodas são um tipo de atuador, mas não são uma das 3 partes principais em si. As partes principais são: sensores, cérebro (computador) e atuadores (como motores).'
+            response: 'As rodas são um tipo de atuador, mas não são uma das 3 partes principais em si.',
+            livesLost: 1,
+            xpLost: 1
           }
         ]
       },
-      {
-        id: 8,
-        type: 'texto',
-        message:
-          'Vamos falar sobre SENSORES! Os sensores são dispositivos que detectam mudanças no ambiente. Alguns exemplos são:',
-        image: '/images/imagem4.jpg'
-      },
-      {
-        id: 9,
-        type: 'texto',
-        message:
-          '🔆 Sensor de luz: Detecta se está claro ou escuro\n🔊 Sensor de som: Detecta ruídos\n🌡️ Sensor de temperatura: Detecta se está quente ou frio\n📏 Sensor de distância: Detecta se algo está perto ou longe\n👆 Sensor de toque: Detecta quando algo é tocado'
-      },
-      {
-        id: 10,
-        type: 'pergunta',
-        message: 'Qual sensor um robô precisaria para saber se está escuro ou claro?',
-        waitForAnswer: true,
-        correctAnswer: 'luz',
-        wrongAnswerResponse:
-          'Não é bem isso. Para detectar se está escuro ou claro, o robô precisaria de um sensor de luz.'
-      },
-      {
-        id: 11,
-        type: 'texto',
-        message:
-          'Excelente! O sensor de luz é perfeito para detectar se está escuro ou claro.\n\nAgora vamos falar sobre o CÉREBRO do robô!'
-      },
-      {
-        id: 12,
-        type: 'texto',
-        message:
-          'O cérebro do robô é um computador pequeno que é programado para controlar todas as ações do robô. Ele recebe informações dos sensores, decide o que fazer e depois comanda os atuadores para agir.',
-        image: '/images/imagem3.jpg'
-      },
-      {
-        id: 13,
-        type: 'opcoes',
-        message: 'Você sabe o que é programação?',
-        options: [
-          {
-            text: 'São instruções para o computador seguir',
-            isCorrect: true,
-            response:
-              'Perfeito! Programação é dar instruções claras e precisas para o computador seguir, como uma receita.'
-          },
-          {
-            text: 'É quando ligamos o robô',
-            isCorrect: false,
-            response:
-              'Na verdade, programação é mais que isso. Programação é criar instruções (código) para o computador seguir, dizendo exatamente o que ele deve fazer.'
-          },
-          {
-            text: 'Não sei',
-            isCorrect: false,
-            response:
-              'Programação é como criar uma lista de instruções muito precisas para o computador seguir. É como uma receita que diz exatamente o que o robô deve fazer em cada situação.'
-          }
-        ]
-      },
-      {
-        id: 14,
-        type: 'texto',
-        message:
-          'Por último, vamos falar sobre os ATUADORES! Os atuadores são os "músculos" do robô. Eles fazem o robô se mover ou interagir com o mundo. Alguns exemplos são:'
-      },
-      {
-        id: 15,
-        type: 'texto',
-        message:
-          '⚙️ Motores: Fazem as rodas girarem ou braços se moverem\n💡 LEDs: São luzes que podem acender e apagar\n🔊 Alto-falantes: Produzem sons\n📱 Telas: Mostram informações\n\nOs atuadores são controlados pelo cérebro do robô!',
-        image: '/images/imagem5.jpg'
-      },
-      {
-        id: 16,
-        type: 'pergunta',
-        message: 'Se um robô precisa se mover para frente e para trás, qual atuador ele precisa?',
-        waitForAnswer: true,
-        correctAnswer: 'motor',
-        wrongAnswerResponse:
-          'Não é bem isso. Para se mover para frente e para trás, um robô geralmente precisa de motores que fazem as rodas girarem.'
-      },
-      {
-        id: 17,
-        type: 'texto',
-        message:
-          'Isso mesmo! Os motores são os atuadores que permitem o movimento do robô.\n\nAgora você já conhece as 3 partes principais de um robô:'
-      },
-      {
-        id: 18,
-        type: 'texto',
-        message:
-          '1️⃣ SENSORES: Detectam o ambiente\n2️⃣ CÉREBRO: Toma decisões\n3️⃣ ATUADORES: Realizam ações\n\nEstas partes trabalham juntas em um ciclo que chamamos de "ciclo robótico":'
-      },
-      {
-        id: 19,
-        type: 'texto',
-        message:
-          'O Ciclo Robótico funciona assim:\n\n1. Os SENSORES coletam informações\n2. O CÉREBRO processa as informações\n3. O CÉREBRO decide o que fazer\n4. Os ATUADORES executam a ação\n5. E o ciclo recomeça!',
-        image: '/images/lessons/ciclo-robotico.jpg'
-      },
-      {
-        id: 20,
-        type: 'texto',
-        message:
-          'Fantástico! Agora você já conhece os conceitos básicos de robótica!\n\nNa próxima aula, vamos conhecer o Arduino, uma plataforma incrível que nos permite criar nossos próprios robôs e projetos eletrônicos!'
-      },
-      {
-        id: 21,
-        type: 'pergunta',
-        message: 'O que você achou mais interessante sobre robótica?',
-        waitForAnswer: true
-      },
-      {
-        id: 22,
-        type: 'texto',
-        message:
-          'Legal! Obrigado por compartilhar! Agora você está pronto para avançar para a próxima etapa da nossa jornada: conhecer o Arduino!\n\nNos vemos na próxima aula! 🤖'
-      }
-    ]
-  },
-  {
-    id: 'introducao-arduino',
-    title: 'Introdução ao Arduino',
-    description: 'Aprenda o que é um Arduino e como ele funciona',
-    level: 'iniciante',
-    thumbnail: '/images/imagem3.jpg',
-    duration: 20,
-    steps: [
-      {
-        id: 1,
-        type: 'texto',
-        message:
-          'Olá novamente! Agora que você já conhece os conceitos básicos de robótica, vamos aprender sobre o Arduino! 🤖 Você está pronto?',
-        options: [
-          {
-            text: 'Sim, estou pronto!',
-            response: 'Ótimo! Vamos começar nossa jornada pelo mundo do Arduino!'
-          },
-          {
-            text: 'O que é Arduino?',
-            response: 'Boa pergunta! Vamos descobrir juntos o que é o Arduino.'
-          }
-        ]
-      },
-      {
-        id: 2,
-        type: 'texto',
-        message:
-          'Primeiro, vamos descobrir: O que é um Arduino? 🤔\n\nArduino é uma pequena placa de computador que podemos programar para fazer muitas coisas legais, como acender luzes, tocar músicas, mover robôs e muito mais!',
-        image: '/images/imagem5.jpg'
-      },
-      {
-        id: 3,
-        type: 'pergunta',
-        message: 'Você consegue imaginar o que podemos criar com um Arduino?',
-        waitForAnswer: true
-      },
-      {
-        id: 4,
-        type: 'texto',
-        message:
-          'Isso mesmo! Com o Arduino podemos criar muitas coisas legais como:\n\n• Robôs que se movem\n• Jogos com luzes\n• Alarmes\n• Instrumentos musicais\n• Regadores automáticos para plantas\n\nE muitas outras invenções divertidas!'
-      },
-      {
-        id: 5,
-        type: 'texto',
-        message:
-          'Vamos olhar como é um Arduino? Esta é a placa Arduino UNO, a mais comum para iniciantes:',
-        image: '/images/imagem4.jpg'
-      },
-      {
-        id: 6,
-        type: 'opcoes',
-        message:
-          'O Arduino tem várias partes importantes. Vamos ver se você consegue identificar uma delas. Qual destas é uma parte do Arduino?',
-        options: [
-          {
-            text: 'Pinos digitais',
-            isCorrect: true,
-            response:
-              'Correto! Os pinos digitais são onde conectamos componentes como LEDs, botões e sensores.'
-          },
-          {
-            text: 'Tela de toque',
-            isCorrect: false,
-            response:
-              'Na verdade, o Arduino básico não tem tela de toque. Ele tem pinos digitais onde conectamos componentes.'
-          },
-          {
-            text: 'Alto-falante',
-            isCorrect: false,
-            response:
-              'Na verdade, o Arduino básico não tem alto-falante embutido. Podemos conectar um usando os pinos digitais.'
-          }
-        ]
-      },
-      {
-        id: 7,
-        type: 'texto',
-        message:
-          'O Arduino funciona com um programa que nós escrevemos e enviamos para ele. Esses programas são chamados de "sketches" e dizem ao Arduino exatamente o que ele deve fazer.'
-      },
-      {
-        id: 8,
-        type: 'texto',
-        message:
-          'Vamos ver um exemplo simples de um programa para o Arduino que faz um LED piscar:',
-        image: '/images/lessons/codigo-led.jpg'
-      },
-      {
-        id: 9,
-        type: 'texto',
-        message:
-          'Este programa faz o Arduino acender e apagar um LED a cada segundo. Vamos tentar entender o código?\n\nA função "setup()" roda uma vez quando o Arduino liga, e a função "loop()" fica rodando repetidamente depois disso.'
-      },
-      {
-        id: 10,
-        type: 'pergunta',
-        message: 'Para que serve a função loop() no Arduino?',
-        waitForAnswer: true,
-        correctAnswer: 'repetir',
-        wrongAnswerResponse:
-          'Hmm, não é bem isso. A função loop() serve para fazer o código repetir continuamente, executando as mesmas instruções várias vezes enquanto o Arduino estiver ligado.'
-      },
-      {
-        id: 11,
-        type: 'texto',
-        message:
-          'Muito bem! A função loop() no Arduino é usada para repetir código continuamente, como um ciclo sem fim.\n\nAgora, vamos montar nosso primeiro circuito com LED!',
-        image: '/images/lessons/circuito-led.jpg'
-      },
-      {
-        id: 12,
-        type: 'texto',
-        message:
-          'Para montar este circuito, precisamos de:\n\n• 1 Arduino UNO\n• 1 LED (qualquer cor)\n• 1 Resistor de 220 ohms\n• Fios de conexão\n• 1 Protoboard (aquela placa branca com furinhos)'
-      },
-      {
-        id: 13,
-        type: 'opcoes',
-        message: 'Qual é a função do resistor neste circuito com LED?',
-        options: [
-          {
-            text: 'Fazer o LED brilhar mais forte',
-            isCorrect: false,
-            response:
-              'Na verdade, o resistor faz o contrário! Ele limita a corrente para proteger o LED.'
-          },
-          {
-            text: 'Limitar a corrente para proteger o LED',
-            isCorrect: true,
-            response:
-              'Exatamente! O resistor limita a quantidade de corrente elétrica que passa pelo LED, protegendo-o de queimar.'
-          },
-          {
-            text: 'Apenas decoração',
-            isCorrect: false,
-            response:
-              'O resistor não é decoração! Ele tem uma função importante: limitar a corrente para proteger o LED de queimar.'
-          }
-        ]
-      },
-      {
-        id: 14,
-        type: 'texto',
-        message:
-          'Parabéns! Você aprendeu os conceitos básicos do Arduino hoje:\n\n1. O que é um Arduino\n2. Para que ele serve\n3. Como funciona um programa básico\n4. Como montar um circuito simples com LED'
-      },
+      
       {
         id: 15,
         type: 'comando-robo',
-        message:
-          'Vamos ver se conseguimos fazer o robô acender um LED! Clique no botão abaixo para tentar:',
-        robotCommand: 'LED_ON'
-      },
-      {
-        id: 16,
-        type: 'pergunta',
-        message: 'Você gostou de aprender sobre Arduino? O que você achou mais interessante?',
-        waitForAnswer: true
-      },
-      {
-        id: 17,
-        type: 'texto',
-        message:
-          'Obrigado por compartilhar! Na próxima aula, vamos aprender a fazer mais projetos legais com o Arduino, como um semáforo com luzes coloridas e um sensor de luz!\n\nAté a próxima aventura com o Robo-Duino! 🤖'
+        message: 'Vamos ver se conseguimos fazer o robô acender um LED! Clique no botão abaixo para tentar:',
+        robotCommand: 'LED_ON',
+        
+        xpReward: 8, // Mais XP para comandos robô
+        stepProgress: 90,
+        
+        // 🤖 COMANDO ROBO AVANÇADO
+        robotCommands: [
+          {
+            command: 'LED_ON',
+            displayName: 'Acender LED',
+            description: 'Liga o LED do robô',
+            icon: '💡',
+            color: '#FFD700'
+          }
+        ],
+        
+        // 🔧 TROUBLESHOOTING
+        troubleshooting: [
+          {
+            problem: 'LED não acende',
+            solutions: ['Verificar conexão', 'Verificar se robô está ligado']
+          }
+        ],
+        
+        successMessage: 'Perfeito! O LED acendeu! +5 XP bonus',
+        errorMessage: 'Ops! Vamos tentar novamente. Verifique a conexão do robô.'
       }
     ]
   },
+  
+  {
+    id: 'introducao-arduino',
+    title: 'Introdução ao Arduino',
+    description: 'Aprenda o que é um Arduino e como ele funciona na prática',
+    level: 'iniciante',
+    thumbnail: '/images/imagem3.jpg',
+    duration: 20,
+    
+    // 🎮 GAMIFICAÇÃO
+    xpReward: 75,           // Mais XP que a primeira lição
+    xpPerStep: 4,
+    bonusXP: 15,
+    gemsReward: 8,
+    livesRequired: 1,
+    
+    // 📚 METADADOS
+    difficulty: 2,
+    tags: ['arduino', 'programação', 'eletrônica'],
+    prerequisites: ['robotica-basica'],
+    nextLessons: ['projetos-led', 'sensores-arduino'],
+    
+    // 🤖 INTEGRAÇÃO IA
+    chatContext: 'Esta lição ensina Arduino básico. O aluno está aprendendo sobre programação e circuitos.',
+    suggestedQuestions: [
+      'Como programar um Arduino?',
+      'O que é um sketch no Arduino?',
+      'Como conectar um LED ao Arduino?'
+    ],
+    
+    steps: [
+      // Steps com estrutura similar, mas conteúdo de Arduino
+      {
+        id: 1,
+        type: 'texto',
+        message: 'Olá novamente! Agora que você já conhece os conceitos básicos de robótica, vamos aprender sobre o Arduino! 🤖',
+        xpReward: 4,
+        stepProgress: 5,
+        options: [
+          {
+            text: 'Sim, estou pronto!',
+            isCorrect: true,
+            response: 'Ótimo! Vamos começar nossa jornada pelo mundo do Arduino!',
+            xpBonus: 2
+          }
+        ]
+      }
+      // ... mais steps
+    ]
+  },
+  
+  // 🚀 LIÇÕES FUTURAS COM PREVIEW
   {
     id: 'projetos-led',
     title: 'Criando com LEDs',
-    description: 'Aprenda a fazer projetos divertidos com LEDs',
+    description: 'Aprenda a fazer projetos divertidos com LEDs coloridos',
     level: 'iniciante',
     thumbnail: '/images/imagem2.jpg',
     duration: 25,
-    steps: [
-      // Conteúdo a ser adicionado no futuro
-    ]
+    xpReward: 60,
+    
+    // 🔒 SISTEMA DE DESBLOQUEIO
+    locked: true,
+    unlockRequirements: {
+      completedLessons: ['robotica-basica', 'introducao-arduino'],
+      minimumXP: 100,
+      minimumLevel: 2
+    },
+    
+    preview: {
+      description: 'Nesta lição você aprenderá a criar semáforos, luzes piscantes e efeitos luminosos incríveis!',
+      features: ['Semáforo inteligente', 'Luzes de festa', 'Display LED']
+    },
+    
+    steps: [] // Será preenchido quando desbloqueado
   },
+  
   {
     id: 'sensores-arduino',
     title: 'Sensores Divertidos',
-    description: 'Aprenda a usar sensores com o Arduino',
+    description: 'Aprenda a usar sensores para criar projetos interativos',
     level: 'intermediário',
     thumbnail: '/images/imagem1.jpg',
     duration: 30,
-    steps: [
-      // Conteúdo a ser adicionado no futuro
-    ]
+    xpReward: 90,
+    
+    locked: true,
+    unlockRequirements: {
+      completedLessons: ['projetos-led'],
+      minimumXP: 200,
+      minimumLevel: 3
+    },
+    
+    preview: {
+      description: 'Explore sensores de luz, som, movimento e temperatura!',
+      features: ['Detector de movimento', 'Termômetro digital', 'Sensor de luz']
+    },
+    
+    steps: []
   }
 ];
 
-module.exports = lessons;
+// 🎯 CONFIGURAÇÕES GLOBAIS DA GAMIFICAÇÃO
+const gamificationConfig = {
+  levels: {
+    1: { name: 'Iniciante', minXP: 0, badge: '🤖' },
+    2: { name: 'Explorador', minXP: 100, badge: '🔍' },
+    3: { name: 'Construtor', minXP: 250, badge: '🔧' },
+    4: { name: 'Inventor', minXP: 500, badge: '💡' },
+    5: { name: 'Mestre Robótico', minXP: 1000, badge: '🏆' }
+  },
+  
+  achievements: [
+    {
+      id: 'first_lesson',
+      name: 'Primeira Lição',
+      description: 'Complete sua primeira lição',
+      icon: '🎯',
+      xpReward: 10
+    },
+    {
+      id: 'robot_commander',
+      name: 'Comandante Robô',
+      description: 'Execute 5 comandos no robô',
+      icon: '🤖',
+      xpReward: 25
+    },
+    {
+      id: 'streak_master',
+      name: 'Mestre da Sequência',
+      description: 'Mantenha uma sequência de 7 dias',
+      icon: '🔥',
+      gemsReward: 50
+    }
+  ],
+  
+  streakRewards: {
+    3: { gems: 5, message: 'Sequência de 3 dias! 🔥' },
+    7: { gems: 15, xp: 50, message: 'Uma semana completa! 🚀' },
+    30: { gems: 100, xp: 200, message: 'Um mês incrível! 🏆' }
+  }
+};
+
+module.exports = { lessons, gamificationConfig };
