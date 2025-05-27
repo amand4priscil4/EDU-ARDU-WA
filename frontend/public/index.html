@@ -1,24 +1,256 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#4CAF50" />
-    <meta
-      name="description"
-      content="Edu-Ardu - Aplicativo educacional para aprender robótica e Arduino"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Edu-Ardu - Robótica Educacional</title>
-  </head>
-  <body>
-    <noscript>Você precisa habilitar o JavaScript para executar este aplicativo.</noscript>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0066CC" />
+  <meta name="description" content="Plataforma educacional para aprender robótica com Arduino de forma interativa e divertida" />
+  
+  <!-- PWA Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Edu-Ardu" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="msapplication-config" content="%PUBLIC_URL%/browserconfig.xml" />
+  <meta name="msapplication-TileColor" content="#0066CC" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/icons/icon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/images/icons/icon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/images/icons/icon-16x16.png" />
+  <link rel="mask-icon" href="%PUBLIC_URL%/images/icons/safari-pinned-tab.svg" color="#0066CC" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+
+  <!-- Manifest -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Edu-Ardu - Robótica Educacional" />
+  <meta property="og:description" content="Aprenda robótica com Arduino de forma interativa e divertida" />
+  <meta property="og:site_name" content="Edu-Ardu" />
+  <meta property="og:url" content="https://edu-ardu.app" />
+  <meta property="og:image" content="%PUBLIC_URL%/images/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Edu-Ardu - Robótica Educacional" />
+  <meta name="twitter:description" content="Aprenda robótica com Arduino de forma interativa e divertida" />
+  <meta name="twitter:image" content="%PUBLIC_URL%/images/twitter-image.png" />
+
+  <!-- Preconnect para performance -->
+  <link rel="preconnect" href="https://edu-ardu-api.onrender.com" />
+  <link rel="dns-prefetch" href="https://edu-ardu-api.onrender.com" />
+
+  <title>Edu-Ardu - Robótica Educacional</title>
+
+  <!-- Inline Critical CSS para carregamento mais rápido -->
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Loading screen */
+    #app-loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0066CC 0%, #003d7a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      z-index: 9999;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .loading-subtitle {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* Ocultar loading quando app carregar */
+    body.app-loaded #app-loading {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <noscript>
+    <div style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0066CC 0%, #003d7a 100%);
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    ">
+      <h1 style="color: #FF6B35; margin-bottom: 20px;">🤖 Edu-Ardu</h1>
+      <h2>JavaScript Necessário</h2>
+      <p>Esta aplicação precisa do JavaScript habilitado para funcionar.</p>
+      <p>Por favor, habilite o JavaScript no seu navegador e recarregue a página.</p>
+    </div>
+  </noscript>
+
+  <!-- Loading Screen -->
+  <div id="app-loading">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">🤖 Edu-Ardu</div>
+    <div class="loading-subtitle">Carregando aplicação...</div>
+  </div>
+
+  <!-- React App Root -->
+  <div id="root"></div>
+
+  <!-- Service Worker Registration -->
+  <script>
+    // Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('✅ Service Worker registrado:', registration.scope);
+            
+            // Verificar atualizações
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed') {
+                    if (navigator.serviceWorker.controller) {
+                      // Nova versão disponível
+                      console.log('🔄 Nova versão da aplicação disponível');
+                      
+                      // Opcional: mostrar notificação de atualização
+                      if (window.confirm('Nova versão disponível! Deseja atualizar?')) {
+                        newWorker.postMessage({ type: 'SKIP_WAITING' });
+                        window.location.reload();
+                      }
+                    } else {
+                      // Primeira instalação
+                      console.log('📱 Aplicação pronta para uso offline');
+                    }
+                  }
+                });
+              }
+            });
+          })
+          .catch((error) => {
+            console.warn('⚠️ Service Worker registration failed:', error);
+          });
+
+        // Listener para controle do SW
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          console.log('🔄 Service Worker atualizado, recarregando...');
+          window.location.reload();
+        });
+      });
+    }
+
+    // PWA Install Prompt
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      console.log('📱 PWA install prompt disponível');
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      // Opcional: mostrar botão de instalação customizado
+      // showInstallButton();
+    });
+
+    window.addEventListener('appinstalled', () => {
+      console.log('✅ PWA instalada com sucesso');
+      deferredPrompt = null;
+    });
+
+    // Remover loading screen quando React carregar
+    window.addEventListener('DOMContentLoaded', () => {
+      // Timeout de segurança para remover loading
+      setTimeout(() => {
+        const loading = document.getElementById('app-loading');
+        if (loading) {
+          loading.style.opacity = '0';
+          loading.style.transition = 'opacity 0.3s ease';
+          setTimeout(() => {
+            document.body.classList.add('app-loaded');
+          }, 300);
+        }
+      }, 2000); // Remove após 2 segundos como fallback
+    });
+
+    // Analytics e monitoramento (opcional)
+    window.addEventListener('load', () => {
+      // Performance monitoring
+      if ('performance' in window) {
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+        console.log('⚡ Tempo de carregamento:', loadTime + 'ms');
+      }
+
+      // Connection monitoring
+      if ('connection' in navigator) {
+        const connection = navigator.connection;
+        console.log('🌐 Tipo de conexão:', connection.effectiveType);
+        console.log('💾 Economia de dados:', connection.saveData);
+      }
+    });
+
+    // Error handling global
+    window.addEventListener('error', (e) => {
+      console.error('❌ Erro global:', e.error);
+      // Opcional: enviar erro para serviço de monitoramento
+    });
+
+    window.addEventListener('unhandledrejection', (e) => {
+      console.error('❌ Promise rejeitada:', e.reason);
+      // Opcional: enviar erro para serviço de monitoramento
+    });
+
+    // Debug info em desenvolvimento
+    if (window.location.hostname === 'localhost') {
+      console.log('🔧 Modo de desenvolvimento ativo');
+      console.log('🌐 API Base URL:', process?.env?.REACT_APP_API_URL || 'Padrão');
+    }
+  </script>
+
+  <!-- 
+    This HTML file is a template.
+    If you open it directly in the browser, you will see an empty page.
+    
+    You can add webfonts, meta tags, or analytics to this file.
+    The build step will place the bundled scripts into the <body> tag.
+  -->
+</body>
 </html>

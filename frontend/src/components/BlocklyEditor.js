@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import * as Blockly from 'blockly';
 // Importe o módulo javascript separadamente
 import 'blockly/javascript';
-// Importe o gerador de JavaScript corretamente
-import * as BlocklyJS from 'blockly/javascript';
+// Importe o gerador de JavaScript corretamente 
+import { javascriptGenerator } from 'blockly/javascript';
 
 const BlocklyEditor = ({ onCodeChange }) => {
   const blocklyDiv = useRef(null);
@@ -28,7 +28,7 @@ const BlocklyEditor = ({ onCodeChange }) => {
       // Atualizar o código quando o workspace mudar
       workspaceRef.current.addChangeListener(() => {
         // Use BlocklyJS em vez de Blockly.JavaScript
-        const code = BlocklyJS.javascriptGenerator.workspaceToCode(workspaceRef.current);
+        const code = javascriptGenerator.workspaceToCode(workspaceRef.current);
         if (onCodeChange) {
           onCodeChange(code);
         }

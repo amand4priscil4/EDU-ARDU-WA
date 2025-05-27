@@ -1,15 +1,154 @@
 {
-    "short_name": "Edu-Ardu",
-    "name": "Edu-Ardu - Robótica Educacional",
-    "icons": [
-      {
-        "src": "favicon.ico",
-        "sizes": "64x64 32x32 24x24 16x16",
-        "type": "image/x-icon"
+  "short_name": "Edu-Ardu",
+  "name": "Edu-Ardu - Robótica Educacional",
+  "description": "Plataforma educacional para aprender robótica com Arduino de forma interativa e divertida",
+  "icons": [
+    {
+      "src": "/images/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0066CC",
+  "theme_color": "#0066CC",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "categories": ["education", "utilities", "productivity"],
+  "screenshots": [
+    {
+      "src": "/images/screenshots/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Tela principal do Edu-Ardu em desktop"
+    },
+    {
+      "src": "/images/screenshots/screenshot-narrow.png",
+      "sizes": "540x960",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Tela principal do Edu-Ardu em mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Nova Lição",
+      "short_name": "Lições",
+      "description": "Acesse as lições interativas",
+      "url": "/lessons",
+      "icons": [
+        {
+          "src": "/images/icons/lessons-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Chat IA",
+      "short_name": "Chat",
+      "description": "Converse com a IA sobre robótica",
+      "url": "/chat",
+      "icons": [
+        {
+          "src": "/images/icons/chat-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Controle do Robô",
+      "short_name": "Robô",
+      "description": "Controle seu robô Arduino",
+      "url": "/robot",
+      "icons": [
+        {
+          "src": "/images/icons/robot-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Meu Progresso",
+      "short_name": "Progresso",
+      "description": "Veja suas conquistas e estatísticas",
+      "url": "/dashboard",
+      "icons": [
+        {
+          "src": "/images/icons/dashboard-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "dir": "ltr",
+  "iarc_rating_id": "",
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+eduardu",
+      "url": "/?action=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "application/vnd.eduardu.lesson": [".lesson"],
+        "application/vnd.eduardu.project": [".ardu"]
       }
-    ],
-    "start_url": ".",
-    "display": "standalone",
-    "theme_color": "#4CAF50",
-    "background_color": "#ffffff"
-  }
+    }
+  ]
+}
